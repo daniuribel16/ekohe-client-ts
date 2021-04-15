@@ -1,17 +1,25 @@
 @font-face {
-  font-family: 'Roboto';
-  src: local('Roboto'), url(./assets/fonts/Roboto-Regular.ttf) format('ttf');
+  font-family: 'Roboto-Regular';
+  src: local('Roboto-Regular'), url(./assets/fonts/Roboto-Regular.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Roboto-Bold';
-  src: local('Roboto-Bold'), url(./assets/fonts/Roboto-Bold.ttf) format('ttf');
+  src: local('Roboto-Bold'), url(./assets/fonts/Roboto-Bold.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto-Light';
+  src: local('Roboto-Light'), url(./assets/fonts/Roboto-Light.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto-Medium';
+  src: local('Roboto-Medium'), url(./assets/fonts/Roboto-Medium.ttf) format('truetype');
 }
 
 
 body {
   margin: 0;
   color: '#D8D8D8';
-  font-family: 'Roboto';
+  font-family: 'Roboto-Regular';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
