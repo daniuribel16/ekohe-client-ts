@@ -9,6 +9,7 @@ const styles = {
   link: {
     color: 'rgb(175 174 174)', textDecoration: 'underline', textAlign: 'right' as 'right', marginLeft: '1.5rem', fontSize: '17px',
   },
+  checkbox: { fontWeight: 500 },
 };
 interface FormState {
   email: string,
@@ -34,8 +35,9 @@ const LoginForm = () => {
     window.location.reload();
   };
 
+  const contStyles = { width: width > 435 ? '80%' : '95%', marginTop: '22%' };
   return (
-    <Container style={{ width: width > 435 ? '80%' : '95%', marginTop: '22%' }}>
+    <Container style={contStyles}>
       <Row>
         <Col className="d-flex justify-content-center mb-4">
           <h3>Log in</h3>
@@ -66,7 +68,7 @@ const LoginForm = () => {
       <Row className="pt-3">
         <Col>
           <Form.Group controlId="formBasicCheckbox">
-            <Form.Check custom style={{ fontWeight: 500 }} checked={form.rememberme} type="checkbox" label="REMEMBER ME" />
+            <Form.Check custom style={styles.checkbox} checked={form.rememberme} type="checkbox" label="REMEMBER ME" />
           </Form.Group>
         </Col>
         <Col className="text-right">

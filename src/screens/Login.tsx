@@ -9,16 +9,24 @@ import soundcloudIcon from '../assets/icons/soundcloud.svg';
 import spotifyIcon from '../assets/icons/spotify.svg';
 import useWindowDimensions from '../hooks/useWindowDimensions';
 
+const footerStyles = { position: 'absolute' as 'absolute', bottom: 0 };
+const headerStyles = { padding: '1rem 2rem 0.5rem' }
 const styles = {
+  bar: { width: '100%', background: '#1A1B35', padding: '1rem 1.5rem' },
   footerFbIcon: { width: '13px', margin: '0 1rem', cursor: 'pointer' },
   footerIcon: { width: '28px', margin: '0 1rem', cursor: 'pointer' },
   footerLink: { color: '#cccccc', margin: '0 1rem' }
-}
+};
 const Login = () => {
   const { height, width } = useWindowDimensions();
 
   return (
     <>
+      <Row style={{ ...styles.bar, ...headerStyles} } className="d-lg-none d-xl-none">
+        <Col className="text-left text-light">
+          <h3>LOGO</h3>
+        </Col>
+      </Row>
       <Row>
         <Col className="d-none d-lg-block d-xl-block">
           <img className="w-100" alt="background" style={{ height: height - 60 }} src={spacebackground} />
@@ -27,7 +35,7 @@ const Login = () => {
           <LoginForm />
         </Col>
       </Row>
-      <Row style={{ width: '100%', background: '#1A1B35', padding: '1rem 1.5rem', position: 'absolute', bottom: 0 }}>
+      <Row style={{ ...styles.bar, ...footerStyles }}>
         <Col>
           <div className="d-flex flex-row justify-content-start">
             <a href="#" style={styles.footerLink}>Terms of Services</a>
