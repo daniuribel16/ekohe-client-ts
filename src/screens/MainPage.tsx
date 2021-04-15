@@ -5,7 +5,7 @@ import storage, { LOGGED_IN } from '../helpers/storage';
 import http from '../services/http';
 import ShowItem from './components/ShowItem';
 
-const showsAPIUrl = 'http://api.tvmaze.com/search/shows?q=batman';
+const showsAPIUrl = 'https://api.tvmaze.com/search/shows?q=batman';
 const styles = {
   logoutBtn: { margin: '1rem' },
 };
