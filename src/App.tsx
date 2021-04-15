@@ -1,25 +1,50 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Login from './screens/Login';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
+import MainPage from './screens/MainPage';
+import useLoggedUser from './hooks/useLoggedUser';
 
-function App() {
+interface privateRouteProps {
+  path: string,
+  component: any,
+  loggedin: boolean | null,
+}
+
+const PrivateRoute = (props: privateRouteProps) => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Route
+      path={props.path}
+      render={(p) => (props.loggedin
+        ? <props.component {...p} />
+        : <Redirect to={{ pathname: '/login' }} />)}
+    />
+  )
+};
+
+const App = () => {
+  const isLoggedin = useLoggedUser()
+  return (
+    <Router>
+        <Switch>
+          <Route exact path="/"><Redirect to="/main" /></Route>
+          <Route path="/login">
+            {!isLoggedin
+              ? <Login />
+              : <Redirect to="/main" />}
+          </Route>
+          <PrivateRoute
+            path="/main"
+            component={MainPage}
+            loggedin={isLoggedin}
+          />
+        </Switch>
+    </Router>
   );
 }
 
